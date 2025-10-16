@@ -46,4 +46,14 @@ const getUserProfile = async (req, res) => {
   }
 };
 
-module.exports = { signupUser, loginUser, getUserProfile };
+const getAllUsers = async (req, res) => {
+  try {
+    // Fetch all users, only returning ID, name, and email for assignment purposes.
+    const users = await User.find({}).select("-password"); 
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch users list", error: error.message });
+  }
+};
+
+module.exports = { signupUser, loginUser, getUserProfile, getAllUsers };

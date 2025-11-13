@@ -48,7 +48,6 @@ const getUserProfile = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   try {
-    // Fetch all users, only returning ID, name, and email for assignment purposes.
     const users = await User.find({}).select("-password"); 
     res.json(users);
   } catch (error) {

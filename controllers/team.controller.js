@@ -4,6 +4,9 @@ const Team = require("../models/team.model");
 const createTeam = async (req, res) => {
   try {
     const team = await Team.create(req.body);
+//     const { name, description, members = [] } = req.body;
+// const team = await Team.create({ name, description, members });
+
     res.status(201).json(team);
   } catch (error) {
     res.status(500).json({ message: "Failed to create team", error: error.message });
